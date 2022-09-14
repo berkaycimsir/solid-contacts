@@ -1,7 +1,13 @@
+import { Container } from '@hope-ui/solid';
 import type { Component } from 'solid-js';
+import Header from './components/Header';
 
 const App: Component = () => {
-  return <div>Hello Solid</div>;
+  return (
+    <Container centered maxW="$containerLg">
+      <Header />
+    </Container>
+  );
 };
 
 export default App;
