@@ -1,6 +1,7 @@
 import { BsSun } from 'solid-icons/bs';
 import { IoMoonOutline } from 'solid-icons/io';
 import { IconButton, useColorMode, hope } from '@hope-ui/solid';
+import { Component } from 'solid-js';
 
 const StyledIconButton = hope(IconButton, {
   baseStyle: {
@@ -32,7 +33,7 @@ const StyledMoonIcon = hope(IoMoonOutline, {
   },
 });
 
-const ThemeSwitchButton = () => {
+const ThemeSwitchButton: Component = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const isDark = () => colorMode() === 'dark';

@@ -1,7 +1,8 @@
 import { Box, Flex, Heading, Spacer } from '@hope-ui/solid';
+import { Component } from 'solid-js';
 import ThemeSwitchButton from './ThemeSwitchButton';
 
-const Header = () => {
+const Header: Component = () => {
   return (
     <Box h="$24">
       <Flex h="$full" alignItems="center">
