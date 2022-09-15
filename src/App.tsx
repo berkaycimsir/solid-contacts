@@ -3,10 +3,11 @@ import { Component, createResource, Show } from 'solid-js';
 import ContactList from './components/Contact/ContactList';
 import ContactSkeletons from './components/Contact/ContactSkeletons';
 import Header from './components/Header';
+import { Contact } from './types/Contact';
 import { fetchContacts } from './utils/fetchContacts';
 
 const App: Component = () => {
-  const [data] = createResource(fetchContacts);
+  const [data] = createResource<Array<Contact>>(fetchContacts);
 
   return (
     <Container p="$6" centered maxW="$containerLg">
@@ -17,7 +18,7 @@ const App: Component = () => {
       </Show>
 
       <Show when={data() && !data.loading}>
-        <ContactList />
+        <ContactList contacts={data()} />
       </Show>
     </Container>
   );
