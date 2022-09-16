@@ -12,6 +12,7 @@ import { IoMail, IoAdd } from 'solid-icons/io';
 import { BiRegularBlock } from 'solid-icons/bi';
 import { Component } from 'solid-js';
 import { Contact } from '../../types/Contact';
+import { setAddedContacts } from '../../store/addedContacts';
 
 type Props = {
   contact: Contact;
@@ -104,6 +105,8 @@ const ContactListItem: Component<Props> = ({ contact }) => {
     'accent'
   );
 
+  const addContact = () => setAddedContacts((prev) => [contact, ...prev]);
+
   return (
     <StyledContactCard>
       <StyledContactHeader>
@@ -145,6 +148,7 @@ const ContactListItem: Component<Props> = ({ contact }) => {
           <Button
             variant="subtle"
             colorScheme={addContactButtonColor()}
+            onClick={addContact}
             rightIcon={<IoAdd size={18} />}
           >
             Add
