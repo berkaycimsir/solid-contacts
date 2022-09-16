@@ -1,4 +1,4 @@
-import { Container, Grid } from '@hope-ui/solid';
+import { Container } from '@hope-ui/solid';
 import { Component, createResource, Show } from 'solid-js';
 import ContactList from './components/Contact/ContactList';
 import ContactSkeletons from './components/Contact/ContactSkeletons';
@@ -10,7 +10,7 @@ const App: Component = () => {
   const [data] = createResource<Array<Contact>>(fetchContacts);
 
   return (
-    <Container p="$6" centered maxW="$containerLg">
+    <Container p="$6" centered maxW="$containerXl">
       <Header />
 
       <Show when={data.loading}>
