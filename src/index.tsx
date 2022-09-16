@@ -4,12 +4,15 @@ import { HopeProvider } from '@hope-ui/solid';
 
 import './utils/index.css';
 import App from './App';
+import { Router } from '@solidjs/router';
 import { config } from './utils/theme';
 
 render(
   () => (
     <HopeProvider config={config}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </HopeProvider>
   ),
   document.getElementById('root') as HTMLElement
