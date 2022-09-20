@@ -13,6 +13,7 @@ const StyledCard = hope(Box, {
     borderColor: '$neutral6',
     borderRadius: '$sm',
     padding: '$6',
+    minHeight: 226,
   },
 });
 

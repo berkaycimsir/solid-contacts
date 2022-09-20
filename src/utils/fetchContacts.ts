@@ -1,3 +1,5 @@
+import { produce } from 'solid-js/store';
+import { contacts, setContacts } from '../store/contacts';
 import { Contact } from '../types/Contact';
 import { sleep } from './helpers';
 
@@ -12,16 +14,27 @@ const include = [
   'picture',
 ].join(',');
 
-export const fetchContacts = async (): Promise<Contact[]> => {
+const RESULTS_PER_PAGE = '15';
+
+export const fetchContacts = async (page: number): Promise<void> => {
+  const cachedResult = contacts.data.find((it) => it.page === page);
+  if (cachedResult) return;
+
   const fetchUrl = new URL(BASE_URL);
-  fetchUrl.searchParams.append('results', '12');
+
+  fetchUrl.searchParams.append('page', String(page));
+  fetchUrl.searchParams.append('results', RESULTS_PER_PAGE);
   fetchUrl.searchParams.append('inc', include);
 
   const res = await fetch(fetchUrl);
 
   await sleep(2000);
 
-  const contacts = await res.json();
+  const { results }: { results: Array<Contact> } = await res.json();
 
-  return contacts.results;
+  setContacts(
+    produce((prev) => {
+      prev.data = [{ page, result: results }, ...prev.data];
+    })
+  );
 };
