@@ -45,7 +45,7 @@ const ContactCount: Component = () => {
 
   const colorScheme = useColorModeValue<
     BadgeProps['colorScheme'] | IconButtonProps['colorScheme']
-  >('danger', 'accent');
+  >('info', 'accent');
 
   const totalContacts = createMemo(() =>
     addedContacts.reduce((contact) => (contact += 1), 0)

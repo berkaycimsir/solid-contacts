@@ -120,7 +120,7 @@ const ContactListItem: Component<Props> = ({ contact }) => {
   );
 
   const isBlockedContact = createMemo(() =>
-    blockedContacts.find((id) => id === contact.id)
+    blockedContacts.find(({ id }) => id === contact.id)
   );
 
   const addContact = () => setAddedContacts((prev) => [contact, ...prev]);
@@ -130,11 +130,11 @@ const ContactListItem: Component<Props> = ({ contact }) => {
   };
 
   const blockContact = () => {
-    setBlockedContacts((prev) => [contact.id, ...prev]);
+    setBlockedContacts((prev) => [contact, ...prev]);
   };
 
   const unBlockContact = () => {
-    setBlockedContacts((prev) => prev.filter((id) => id !== contact.id));
+    setBlockedContacts((prev) => prev.filter(({ id }) => id !== contact.id));
   };
 
   const onSecondaryButtonClick = () => {

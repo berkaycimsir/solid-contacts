@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Spacer } from '@hope-ui/solid';
 import { useNavigate } from '@solidjs/router';
 import { Component } from 'solid-js';
+import BlockedCount from './BlockedCount';
 import ContactCount from './ContactCount';
 import ThemeSwitchButton from './ThemeSwitchButton';
 
@@ -21,6 +22,7 @@ const Header: Component = () => {
 
         <Spacer />
 
+        <BlockedCount />
         <ContactCount />
         <ThemeSwitchButton />
       </Flex>
