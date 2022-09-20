@@ -72,6 +72,7 @@ const Pagination: Component = () => {
     <Box
       display="flex"
       flexDirection={{ '@initial': 'row', '@lg': 'column' }}
+      justifyContent={{ '@initial': 'center', '@lg': 'start' }}
       gap="$3"
     >
       <StyledArrowButton
