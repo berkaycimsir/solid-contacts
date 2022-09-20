@@ -1,34 +1,66 @@
-## Usage
+# Solid Contacts
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+> Solid Contacts is a contact app to learn more about concepts like Solid.js (router / store / resources / reactivity), Vite and Hope UI.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+> Live demo [here](solid-contacts.vercel.app).
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+## Table of Contents
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Setup](#setup)
+- [Project Status](#project-status)
+- [Contact](#contact)
+- [Support](#show-your-support)
+<!-- * [License](#license) -->
 
-## Available Scripts
+## General Information
 
-In the project directory, you can run:
+Solid Contacts is a contact app to learn more about concepts like Solid.js (router / store / resources / reactivity), Vite and Hope UI.
 
-### `npm dev` or `npm start`
+I tried to use latest versions of the technologies to stay up to date with them.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used
 
-The page will reload if you make edits.<br>
+- **Solid.js (with typescript)**
+  - solid-js/store as a state manager
+  - Hope UI for UI library
+  - Randomuser.me API to fetch random contacts
+  - solid-router to achieve route management across app
+- **API**
+  - Pagination
+  - Cache
+- **Vite**
+  - vite solid plugin
 
-### `npm run build`
+## Setup
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+First, clone the repository:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+`git clone https://github.com/berkaycimsir/solid-contacts.git <directory_name>`
 
-## Deployment
+Second, go to the project folder and install dependencies:
 
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+`yarn install`
+
+Finally, you can start the project by running:
+
+`yarn dev`
+
+## Project Status
+
+Project is: _completed_
+
+## Contact
+
+Created by [@berkaycimsir](https://www.github.com/berkaycimsir) - feel free to contact me!
+
+👤 **Berkay Çimşir**
+
+- Website: [personal blog](https://berkaycimsir-personal-blog.deno.dev/)
+- Twitter: [@berkaycimsir](https://twitter.com/berkaycimsir)
+- Github: [@berkaycimsir](https://github.com/berkaycimsir)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
