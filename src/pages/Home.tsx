@@ -16,8 +16,7 @@ const StyledWrapper = hope(Box, {
   baseStyle: {
     w: '$full',
     display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column-reverse',
+    flexDirection: 'column',
     gap: '$6',
 
     '@lg': {
@@ -41,8 +40,6 @@ const Home: Component = () => {
 
   return (
     <StyledWrapper>
-      <Pagination />
-
       <Show when={loading()}>
         <ContactSkeletons />
       </Show>
@@ -50,6 +47,8 @@ const Home: Component = () => {
       <Show when={currentContacts() && !loading()}>
         <ContactList contacts={currentContacts() || []} />
       </Show>
+
+      <Pagination />
     </StyledWrapper>
   );
 };

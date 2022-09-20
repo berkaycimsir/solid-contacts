@@ -2,7 +2,6 @@ import { hope, IconButton, Box, Badge, Tooltip } from '@hope-ui/solid';
 import { useNavigate } from '@solidjs/router';
 import { BiRegularBlock } from 'solid-icons/bi';
 import { Component, createMemo, Show } from 'solid-js';
-import { addedContacts } from '../../store/addedContacts';
 import { blockedContacts } from '../../store/blockedContacts';
 
 const StyledIconButton = hope(IconButton, {
