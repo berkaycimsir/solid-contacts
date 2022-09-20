@@ -30,6 +30,10 @@ const StyledButton = hope(Button, {
   baseStyle: {
     width: 20,
     height: 32,
+
+    '&:focus': {
+      boxShadow: 'none',
+    },
   },
 });
 
@@ -73,14 +77,26 @@ const Pagination: Component = () => {
       <StyledArrowButton
         aria-label="pagination-up"
         variant="ghost"
-        icon={lg() ? <HiOutlineChevronDoubleUp size={16} /> : <HiOutlineChevronDoubleLeft size={16} />}
+        icon={
+          lg() ? (
+            <HiOutlineChevronDoubleUp size={16} />
+          ) : (
+            <HiOutlineChevronDoubleLeft size={16} />
+          )
+        }
         onClick={() => setPage(buttons[0].page)}
       />
 
       <StyledArrowButton
         aria-label="pagination-up"
         variant="ghost"
-        icon={lg() ? <FaSolidChevronUp size={14} /> : <FaSolidChevronLeft size={14} />}
+        icon={
+          lg() ? (
+            <FaSolidChevronUp size={14} />
+          ) : (
+            <FaSolidChevronLeft size={14} />
+          )
+        }
         onClick={() => setPage(contacts.currentPage - 1)}
       />
 
@@ -98,14 +114,26 @@ const Pagination: Component = () => {
       <StyledArrowButton
         aria-label="pagination-up"
         variant="ghost"
-        icon={lg() ? <FaSolidChevronDown size={14} /> : <FaSolidChevronRight size={14} />}
+        icon={
+          lg() ? (
+            <FaSolidChevronDown size={14} />
+          ) : (
+            <FaSolidChevronRight size={14} />
+          )
+        }
         onClick={() => setPage(contacts.currentPage + 1)}
       />
 
       <StyledArrowButton
         aria-label="pagination-up"
         variant="ghost"
-        icon={lg() ? <HiOutlineChevronDoubleDown size={16} /> : <HiOutlineChevronDoubleRight size={16} />}
+        icon={
+          lg() ? (
+            <HiOutlineChevronDoubleDown size={16} />
+          ) : (
+            <HiOutlineChevronDoubleRight size={16} />
+          )
+        }
         onClick={() => setPage(buttons[buttons.length - 1].page)}
       />
     </Box>

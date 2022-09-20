@@ -105,6 +105,11 @@ const ContactListItem: Component<Props> = ({ contact }) => {
     'accent'
   );
 
+  const buttonVariant = useColorModeValue<ButtonProps['variant']>(
+    'subtle',
+    'outline'
+  );
+
   const addContact = () => setAddedContacts((prev) => [contact, ...prev]);
 
   return (
@@ -146,7 +151,7 @@ const ContactListItem: Component<Props> = ({ contact }) => {
       <StyledCardBottom>
         <Tooltip placement="left" withArrow label="Add this contact">
           <Button
-            variant="subtle"
+            variant={buttonVariant()}
             colorScheme={addContactButtonColor()}
             onClick={addContact}
             rightIcon={<IoAdd size={18} />}
@@ -158,7 +163,7 @@ const ContactListItem: Component<Props> = ({ contact }) => {
         <Tooltip placement="left" withArrow label="Block this contact">
           <IconButton
             icon={<BiRegularBlock size={14} />}
-            variant="subtle"
+            variant={buttonVariant()}
             aria-label="block-contact"
             colorScheme="danger"
           />
