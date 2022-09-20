@@ -2,7 +2,7 @@
 
 > Solid Contacts is a contact app to learn more about concepts like Solid.js (router / store / resources / reactivity), Vite and Hope UI.
 
-> Live demo [here](solid-contacts.vercel.app).
+> Live demo [here](https://solid-contacts.vercel.app).
 
 ## Table of Contents
 
