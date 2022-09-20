@@ -9,10 +9,15 @@ import {
 } from '@hope-ui/solid';
 import { FaSolidPhone, FaSolidLocationDot } from 'solid-icons/fa';
 import { IoMail, IoAdd } from 'solid-icons/io';
+import { CgClose, CgUnblock } from 'solid-icons/cg';
 import { BiRegularBlock } from 'solid-icons/bi';
-import { Component } from 'solid-js';
+import { Component, createMemo } from 'solid-js';
 import { Contact } from '../../types/Contact';
-import { setAddedContacts } from '../../store/addedContacts';
+import { addedContacts, setAddedContacts } from '../../store/addedContacts';
+import {
+  blockedContacts,
+  setBlockedContacts,
+} from '../../store/blockedContacts';
 
 type Props = {
   contact: Contact;
@@ -110,7 +115,33 @@ const ContactListItem: Component<Props> = ({ contact }) => {
     'outline'
   );
 
+  const isAddedContact = createMemo(() =>
+    addedContacts.find(({ id }) => id === contact.id)
+  );
+
+  const isBlockedContact = createMemo(() =>
+    blockedContacts.find((id) => id === contact.id)
+  );
+
   const addContact = () => setAddedContacts((prev) => [contact, ...prev]);
+
+  const removeContact = () => {
+    setAddedContacts((prev) => prev.filter(({ id }) => id !== contact.id));
+  };
+
+  const blockContact = () => {
+    setBlockedContacts((prev) => [contact.id, ...prev]);
+  };
+
+  const unBlockContact = () => {
+    setBlockedContacts((prev) => prev.filter((id) => id !== contact.id));
+  };
+
+  const onSecondaryButtonClick = () => {
+    if (isAddedContact()) removeContact();
+    else if (isBlockedContact()) unBlockContact();
+    else blockContact();
+  };
 
   return (
     <StyledContactCard>
@@ -149,23 +180,46 @@ const ContactListItem: Component<Props> = ({ contact }) => {
       </Box>
 
       <StyledCardBottom>
-        <Tooltip placement="left" withArrow label="Add this contact">
-          <Button
-            variant={buttonVariant()}
-            colorScheme={addContactButtonColor()}
-            onClick={addContact}
-            rightIcon={<IoAdd size={18} />}
-          >
-            Add
-          </Button>
-        </Tooltip>
+        {!isBlockedContact() && !isAddedContact() ? (
+          <Tooltip placement="left" withArrow label="Add this contact">
+            <Button
+              variant={buttonVariant()}
+              colorScheme={addContactButtonColor()}
+              onClick={addContact}
+              rightIcon={<IoAdd size={18} />}
+            >
+              Add
+            </Button>
+          </Tooltip>
+        ) : (
+          <div />
+        )}
 
-        <Tooltip placement="left" withArrow label="Block this contact">
+        <Tooltip
+          placement="left"
+          withArrow
+          label={`${
+            isAddedContact()
+              ? 'Remove'
+              : isBlockedContact()
+              ? 'Unblock'
+              : 'Block'
+          } this contact`}
+        >
           <IconButton
-            icon={<BiRegularBlock size={14} />}
+            onClick={onSecondaryButtonClick}
+            icon={
+              isAddedContact() ? (
+                <CgClose size={16} />
+              ) : isBlockedContact() ? (
+                <CgUnblock />
+              ) : (
+                <BiRegularBlock size={14} />
+              )
+            }
             variant={buttonVariant()}
             aria-label="block-contact"
-            colorScheme="danger"
+            colorScheme={isBlockedContact() ? 'success' : 'danger'}
           />
         </Tooltip>
       </StyledCardBottom>

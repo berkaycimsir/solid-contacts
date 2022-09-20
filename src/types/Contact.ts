@@ -36,6 +36,7 @@ export interface Picture {
 }
 
 export interface Contact {
+  id: string;
   gender: string;
   name: Name;
   location: Location;

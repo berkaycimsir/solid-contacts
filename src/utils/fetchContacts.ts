@@ -1,7 +1,7 @@
+import { nanoid } from 'nanoid';
 import { produce } from 'solid-js/store';
 import { contacts, setContacts } from '../store/contacts';
 import { Contact } from '../types/Contact';
-import { sleep } from './helpers';
 
 const BASE_URL = 'https://randomuser.me/api';
 
@@ -28,13 +28,14 @@ export const fetchContacts = async (page: number): Promise<void> => {
 
   const res = await fetch(fetchUrl);
 
-  await sleep(2000);
-
   const { results }: { results: Array<Contact> } = await res.json();
 
   setContacts(
     produce((prev) => {
-      prev.data = [{ page, result: results }, ...prev.data];
+      prev.data = [
+        { page, result: results.map((r) => ({ ...r, id: nanoid() })) },
+        ...prev.data,
+      ];
     })
   );
 };
