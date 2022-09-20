@@ -166,10 +166,9 @@ const ContactListItem: Component<Props> = ({ contact }) => {
       <Box mt="$4">
         <StyledInfoWrapper mb="$1_5">
           <StyledLocationIcon />
-          <Box as="span" fontWeight="$medium">
-            {contact.location.country}
+          <Box noOfLines={1} as="span" fontWeight="$medium">
+            {contact.location.country} - {contact.location.city}
           </Box>
-          - {contact.location.city}
         </StyledInfoWrapper>
 
         <StyledInfoWrapper>
