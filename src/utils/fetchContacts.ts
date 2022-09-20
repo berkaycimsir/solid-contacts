@@ -33,7 +33,11 @@ export const fetchContacts = async (page: number): Promise<void> => {
   setContacts(
     produce((prev) => {
       prev.data = [
-        { page, result: results.map((r) => ({ ...r, id: nanoid() })) },
+        {
+          page,
+          result: results.map((r) => ({ ...r, id: nanoid() })),
+          search: '',
+        },
         ...prev.data,
       ];
     })

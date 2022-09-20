@@ -3,7 +3,7 @@ import { Contact } from '../types/Contact';
 
 export const [contacts, setContacts] = createStore<{
   currentPage: number;
-  data: Array<{ page: number; result: Array<Contact> }>;
+  data: Array<{ page: number; result: Array<Contact>; search: string }>;
 }>({
   currentPage: 1,
   data: [],

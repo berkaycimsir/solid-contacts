@@ -12,7 +12,7 @@ const Breadcrumbs: Component = () => {
   const location = useLocation();
 
   return (
-    <Breadcrumb fontWeight={800} mb="$6">
+    <Breadcrumb fontWeight={800} mb="$8">
       <BreadcrumbItem>
         <BreadcrumbLink
           color={location.pathname === '/' ? '$info10' : '$neutral11'}

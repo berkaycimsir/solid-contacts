@@ -1,3 +1,5 @@
+import { Contact } from '../types/Contact';
+
 export const sleep = async (ms: number) => {
   return await new Promise((resolve) => setTimeout(resolve, ms));
 };
@@ -13,4 +15,8 @@ export const getLocationNameFromRoute = (
     default:
       return undefined;
   }
+};
+
+export const getContactFullName = (contact: Contact): string => {
+  return `${contact.name.first} ${contact.name.last}`;
 };

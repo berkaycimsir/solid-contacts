@@ -18,6 +18,7 @@ import {
   blockedContacts,
   setBlockedContacts,
 } from '../../store/blockedContacts';
+import { getContactFullName } from '../../utils/helpers';
 
 type Props = {
   contact: Contact;
@@ -32,6 +33,7 @@ const StyledContactCard = hope(Box, {
     overflow: 'hidden',
     p: '$6',
     w: '$full',
+    h: 226,
 
     '@dark': {
       borderColor: '$neutral6',
@@ -103,7 +105,6 @@ const StyledCardBottom = hope(Box, {
 
 const ContactListItem: Component<Props> = ({ contact }) => {
   const image = contact.picture.thumbnail;
-  const fullName = `${contact.name.first} ${contact.name.last}`;
 
   const addContactButtonColor = useColorModeValue<ButtonProps['colorScheme']>(
     'info',
@@ -153,7 +154,7 @@ const ContactListItem: Component<Props> = ({ contact }) => {
         />
 
         <Box ml="$4">
-          <StyledFullName>{fullName}</StyledFullName>
+          <StyledFullName>{getContactFullName(contact)}</StyledFullName>
 
           <StyledInfoWrapper>
             <StyledPhoneIcon />

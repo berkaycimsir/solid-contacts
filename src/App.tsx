@@ -3,6 +3,7 @@ import { Route, Routes } from '@solidjs/router';
 import { Component } from 'solid-js';
 import Breadcrumbs from './components/Breadcrumbs';
 import Header from './components/Header';
+import Search from './components/Search';
 
 import AddedContacts from './pages/AddedContacts';
 import BlockedContacts from './pages/BlockedContacts';
@@ -14,6 +15,8 @@ const App: Component = () => {
       <Header />
 
       <Breadcrumbs />
+
+      <Search />
 
       <Routes>
         <Route path="/" component={Home} />
