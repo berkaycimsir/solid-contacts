@@ -1,3 +1,4 @@
+import { Box, hope } from '@hope-ui/solid';
 import {
   Component,
   createEffect,
@@ -10,6 +11,20 @@ import ContactSkeletons from '../components/Contact/ContactSkeletons';
 import Pagination from '../components/Pagination';
 import { contacts } from '../store/contacts';
 import { fetchContacts } from '../utils/fetchContacts';
+
+const StyledWrapper = hope(Box, {
+  baseStyle: {
+    w: '$full',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column-reverse',
+    gap: '$6',
+
+    '@lg': {
+      flexDirection: 'row',
+    },
+  },
+});
 
 const Home: Component = () => {
   const [loading, setLoading] = createSignal<boolean>(false);
@@ -25,7 +40,9 @@ const Home: Component = () => {
   );
 
   return (
-    <div>
+    <StyledWrapper>
+      <Pagination />
+
       <Show when={loading()}>
         <ContactSkeletons />
       </Show>
@@ -33,9 +50,7 @@ const Home: Component = () => {
       <Show when={currentContacts() && !loading()}>
         <ContactList contacts={currentContacts() || []} />
       </Show>
-
-      <Pagination />
-    </div>
+    </StyledWrapper>
   );
 };
 

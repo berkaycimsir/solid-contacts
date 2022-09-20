@@ -7,6 +7,7 @@ const fakeArray = Array.from({ length: 15 }, (_, i) => i + 1);
 const StyledGrid = hope(Grid, {
   baseStyle: {
     gap: '$6',
+    w: '$full',
 
     '@lg': {
       gridTemplateColumns: 'repeat(3, 1fr)',
